@@ -1,0 +1,125 @@
+/*
+ *  UCF COP3330 Fall 2021 Assignment 4 Solution
+ *  Copyright 2021 Reese Stowell
+ */
+
+Class Controller
+{
+@test #6 (Add List)
+Addlist()
+ {
+    Create a Controller object
+    Manually create a list
+    Call the AddList function
+    Test to see if Controller ToDolist array holds the manually created list
+ }
+@test #7 (Delete List)
+Deletelist()
+ {
+    Create a Controller object
+    Manually create a list
+    Call the AddList function and add the created list to the Todolist array
+    Call the Deletelist function
+    Test to see if Controller ToDolist array doesnt hold the manually created list
+ }
+@test #8 (Change Title)
+EditTitle()
+ {
+    Create a Controller object
+    Manually create a list
+    Call the AddList function and add the created list to the Todolist array with a Title
+    Call the EditTitle function with a new title
+    Test to see if lists new title matches the current one
+ }
+@test #9 (Add Item)
+SaveItem()
+ {
+    Create a Controller object
+    Manually create a todolist
+    Manually create a item in the todolist with description, status, and date
+    Call the SaveItem()
+    Test to see if Item is in Item[] of the todolist
+ }
+@test #10 (Removing Item)
+DeleteItem()
+ {
+    Create a Controller object
+    Manually create a todolist
+    Manually create a item in the todolist with a description, date, and status
+    Call the SaveItem() to save the item to the Item array\
+    Call DeleteItem() to delete the item from the Item array
+    Test to see if the Item isnt in Item[] of the todolist
+ }
+@test #11/12/13 (Editing Description, Status, Date)
+SaveEdit()
+ {
+    Create a Controller object
+    Manually create a todolist
+    Manually create a item in the todolist with description, status, and date
+    Call the SaveItem() to save it to the Item[]
+    Call SaveEdit with a new set of description, status, and date
+    Test to see if Item's description, status, and date match the edited one
+ }
+@test #14 (Show All)
+ ShowAll()
+  {
+     Create a Controller object
+     Manually create a todolist
+     Manually create items with status's and add it to the todolist
+     Call Showall()
+     Test to see if Listview shows all the items independent of their status
+  }
+@test #15 (Show incomplete)
+ ShowIncomplete()
+   {
+       Create a Controller object
+       Manually create a todolist
+       Manually create items with status's and add it to the todolist
+       Store completed and incompleted items in seperate arrays
+       Call ShowIncomplete()
+       Test to see if Listview shows all the items that are in the incomplete array
+   }
+@test #16 (Show complete)
+ ShowComplete()
+   {
+       Create a Controller object
+       Manually create a todolist
+       Manually create items with status's and add it to the todolist
+       Store completed and incompleted items in seperate arrays
+       Call ShowComplete()
+       Test to see if Listview shows all the items that are in the complete array
+   }
+@test #17 (Save to external)
+ SaveList()
+   {
+       Create a Controller object
+       Create a file object
+       Create a todolist with items
+       Call SaveList()
+       Test to see if 1 is returned
+   }
+@test #18 (Save multiple to external)
+ SaveManyLists()
+   {
+       Create a Controller object
+       Create a file object
+       Create multiple todolist with items
+       Call SaveManyLists()
+       Test to see if 1 is returned
+   }
+@test #19 (Load external)
+ LoadList()
+   {
+       Create a Controller object
+       Call LoadList()
+       Test to see if the Controller objects todolist array isnt empty
+   }
+@test #20 (Load multiple external)
+ LoadMultipleLists()
+   {
+       Create a Controller object
+       Call LoadMultipleLists()
+       Test to see if the Controller objects todolist array isnt empty use a loop to check that their is multiple
+   }
+}
+}

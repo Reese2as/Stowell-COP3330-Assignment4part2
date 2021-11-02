@@ -1,0 +1,72 @@
+@startuml
+/'
+UCF COP3330 Fall 2021 Assignment 4 Solution
+Copyright 2021 Reese Stowell
+
+Class HelloController will be renamed to Controller and
+Class HelloApp will be renamed to App in the UML I used what it WILL BE
+'/
+Class Controller
+{
+private Button AddList
+private Button DeleteList
+private Button LoadList
+private Button SaveList
+private ListView TodoLists
+private TextField Titlebox
+private Label Nameoflist
+private ListView ItemList
+private Button Edit
+private Button AddItem
+private Button DeleteItem
+private Button ShowCompleted
+private Button ShowIncomplete
+private Button ShowAll
+private Checkbox Completed
+private DatePicker EditDate
+private ChoiceBox EditStatus
+private TextArea EditDescription
+private DatePicker Date
+private ChoiceBox Status
+private TextArea Description
+private Button Save
+private Button SaveEdit
+AddList()
+DeleteList()
+LoadList()
+SaveList()
+AddItem()
+SaveItem()
+DeleteItem()
+ShowCompleted()
+ShowIncomplete()
+ShowAll()
+EditTodo()
+SaveEdit()
+initialize()
+}
+
+Class ToDoList
+{
+String Title
+Item[] Items
+}
+
+Class Item
+{
+String Description
+LocalDate Date
+Boolean Status
+}
+
+Class App
+{
+start(Stage stage)
+main()
+}
+
+ToDoList -- Item: > Holds
+App -- Controller: > Uses
+Controller --  ToDoList: > Creates and Uses
+
+@enduml

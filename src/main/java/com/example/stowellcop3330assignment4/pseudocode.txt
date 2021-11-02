@@ -1,0 +1,140 @@
+/*
+ *  UCF COP3330 Fall 2021 Assignment 4 Solution
+ *  Copyright 2021 Reese Stowell
+ */
+
+ class Controller (Currently HelloController will rename)
+ {
+    Declares variables from fxml files
+    Holds arraylist that stores todolist objects
+
+ Addlist()
+ {
+    This method is used when the add button is pressed on the To-do List viewer(currently hello-view.fxml will be renamed)
+    Will take the Title and store the list in the arraylist
+    Will also refresh the list of to-do's
+ }
+
+ Deletelist()
+ {
+    This method is used when Delete is pressed on To-do List viewer(currently hello-view.fxml will be renamed)
+    Will remove the to-do list from the array list of to-do lists
+    Will also refresh the list of to-do's
+ }
+
+ EditTitle()
+ {
+    This method will be called when the user selects a list and changes the title in the Title textfield
+    Will also refresh the list of to-do's
+ }
+
+ LoadList()
+ {
+    This method is used when Load To-Do List button is pressed on To-do List viewer(currently hello-view.fxml will be renamed)
+    Will load a list in an external file into the list of to-do lists
+ }
+
+ LoadMultipleLists()
+  {
+     This method is used when Load To-Do List button is pressed on To-do List viewer(currently hello-view.fxml will be renamed)
+     Will load multiple lists in an external file into the list of to-do lists
+  }
+
+ SaveList()
+ {
+     This method is used when Save To-Do List button is pressed on To-do List viewer(currently hello-view.fxml will be renamed)
+     Will save a list to an external file
+     return 1 if successfully saved to external
+ }
+
+ SaveManyLists()
+ {
+      This method is used when Save To-Do List button is pressed on To-do List viewer(currently hello-view.fxml will be renamed)
+      Will save multiple lists to an external file
+      return 1 if successfully saved to external
+ }
+
+ AddItem()
+ {
+    This method is used when the Add button is pressed in the List viewer
+    Will load the Newitem.fxml where the user can input description, date, and status
+ }
+
+ SaveItem()
+ {
+    This method is used when the save button is pressed in the NewItem.fxml
+    Will save the inputed description, date, and status in the arraylist of items for the to-do list
+    Will also refresh the list of items
+ }
+
+ DeleteItem()
+ {
+     This method is used when the Delete button is pressed in the List viewer
+     Will remove an Item from the todolist
+     Removes from the Item arraylist in the specific to-do list
+     Will also refresh list of Items in the List
+ }
+
+ShowCompleted()
+{
+    This method is used when the show completed button is pressed in List Viewer
+    Will create an array based on the complete status
+    Will modify the list in the List viewer to only show items whose status is Complete
+}
+
+ShowIncomplete()
+{
+    This method is used when the show incomplete button is pressed in List Viewer'
+    Will create an array based on the incomplete status
+    Will modify the list in the List viewer to only show items whose status is incomplete
+}
+
+ShowAll()
+{
+    This method is used when the show all button is pressed in List Viewer
+    Will modify the list in the List viewer to show all items
+}
+
+EditTodo()
+{
+    This method is used when the user clicks on the edit button in List Viewer
+    It opens EditItem.fxml to edit a specific item in the list
+}
+
+SaveEdit()
+{
+    This method is used when the user clicks on the save button in EditItem.fxml
+    Will save the edited inputed description, date, and status in the arraylist of items for the to-do list
+    Will also refresh the list of items
+}
+
+initialize()
+{
+    This method is ran when the application starts
+    Initialize the list here add complete and incomplete to the status box in NewItem.fxml
+}
+    }
+
+Class To-DoList
+{
+    stores the attributes for the todolist objects
+    Title, and list of item class
+}
+
+Class Item
+{
+    store the attributes for each item
+    Description, Date, status
+}
+
+class App(Currently HelloApplication will be renamed)
+{
+start(Stage stage)
+    {
+        This function creates a window named To-Do List Viewer and loads the To-Do list viewer.fxml (currently hello-view.fxml will be renamed)
+    }
+    Main
+    {
+        The main method calls the launch() function to start the application
+    }
+}

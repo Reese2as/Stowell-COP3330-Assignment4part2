@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Label alignment="CENTER" prefHeight="47.0" prefWidth="600.0" text="Edit Item" VBox.vgrow="ALWAYS">
+            <font>
+                <Font name="Javanese Text" size="32.0" />
+            </font>
+            <padding>
+                <Insets bottom="-70.0" top="-70.0" />
+            </padding>
+        </Label>
+        <HBox prefHeight="217.0" prefWidth="600.0">
+            <children>
+                <VBox prefHeight="336.0" prefWidth="501.0">
+                    <children>
+                        <Label alignment="CENTER" layoutX="10.0" layoutY="30.0" prefHeight="17.0" prefWidth="361.0" text="Due Date">
+                            <font>
+                                <Font name="Javanese Text" size="17.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                        </Label>
+                        <DatePicker prefHeight="25.0" prefWidth="302.0">
+                            <VBox.margin>
+                                <Insets left="20.0" right="20.0" />
+                            </VBox.margin>
+                        </DatePicker>
+                        <Label alignment="CENTER" layoutX="10.0" layoutY="123.0" prefHeight="17.0" prefWidth="361.0" text="Status">
+                            <font>
+                                <Font name="Javanese Text" size="17.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                        </Label>
+                        <ChoiceBox prefHeight="25.0" prefWidth="294.0">
+                            <VBox.margin>
+                                <Insets left="20.0" right="20.0" />
+                            </VBox.margin>
+                        </ChoiceBox>
+                    </children>
+                </VBox>
+                <VBox prefHeight="338.0" prefWidth="521.0">
+                    <children>
+                        <Label alignment="CENTER" prefHeight="48.0" prefWidth="310.0" text="Description">
+                            <font>
+                                <Font name="Javanese Text" size="17.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets right="5.0" top="20.0" />
+                            </VBox.margin>
+                        </Label>
+                        <TextArea prefHeight="176.0" prefWidth="305.0">
+                            <VBox.margin>
+                                <Insets right="5.0" />
+                            </VBox.margin>
+                        </TextArea>
+                        <HBox prefHeight="39.0" prefWidth="310.0">
+                            <VBox.margin>
+                                <Insets top="65.0" />
+                            </VBox.margin>
+                        </HBox>
+                    </children></VBox>
+            </children>
+        </HBox>
+        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="Save">
+            <VBox.margin>
+                <Insets left="250.0" />
+            </VBox.margin>
+        </Button>
+    </children>
+</VBox>
