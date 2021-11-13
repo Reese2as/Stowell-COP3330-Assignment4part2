@@ -7,19 +7,46 @@ package com.example.stowellcop3330assignment4;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.net.URL;
+import java.time.LocalDate;
+import java.util.ResourceBundle;
+
 //Will be renamed to Controller
-public class HelloController {
+public class HelloController implements Initializable {
 
     @FXML
-
-    private ListView List1;
+    private TableView<Items> table;
 
     @FXML
-    protected void initialize()
-    {
-        ObservableList<String> content = FXCollections.observableArrayList("List 1");
-        List1.setItems(content);
+    private TableColumn<Items, Integer> id;
+
+    @FXML
+    private TableColumn<Items, String> Description;
+
+    @FXML
+    private TableColumn<Items, LocalDate> DueDate;
+
+    @FXML
+    private TableColumn<Items, Boolean> Status;
+
+    ObservableList<Items> list = FXCollections.observableArrayList(
+            new Items(1,"Swag", LocalDate.of(2020, 1, 8),true )
+    );
+
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        id.setCellValueFactory(new PropertyValueFactory<Items,Integer>("id"));
+        Description.setCellValueFactory(new PropertyValueFactory<Items,String>("Description"));
+        DueDate.setCellValueFactory(new PropertyValueFactory<Items,LocalDate>("DueDate"));
+        Status.setCellValueFactory(new PropertyValueFactory<Items,Boolean>("Status"));
+
+        table.setItems(list);
     }
 }
