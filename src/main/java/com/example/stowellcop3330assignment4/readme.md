@@ -1,6 +1,6 @@
 WELCOME TO REESE STOWELL'S TO-DO LIST VIEWER
 
-To Add an Item to list input a description, status, and duedate and press the "add" button
+To Add an Item to list input a description, status, and duedate and press the "Add" button
 
 To Delete an Item click on an Item with your cursor and press the "Delete" Button
 
