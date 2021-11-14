@@ -6,9 +6,9 @@ public class Items {
     int id;
     String Description;
     LocalDate Duedate;
-    Boolean Status;
+    String Status;
 
-    public Items(int id, String Description, LocalDate DueDate, Boolean Status)
+    public Items(int id, String Description, LocalDate DueDate, String Status)
     {
         this.id = id;
         this.Description = Description;
@@ -40,11 +40,11 @@ public class Items {
         this.Duedate = DueDate;
     }
 
-    public Boolean getStatus() {
+    public String getStatus() {
         return Status;
     }
 
-    public void setStatus(Boolean Status) {
+    public void setStatus(String Status) {
         this.Status = Status;
     }
 }
