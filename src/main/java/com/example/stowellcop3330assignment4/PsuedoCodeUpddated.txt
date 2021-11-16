@@ -194,3 +194,11 @@
             }
         }
     }
+Class Items
+    int id;
+    String Description;
+    LocalDate Duedate;
+    String Status;
+
+    And standard getters and setters for each
+}
