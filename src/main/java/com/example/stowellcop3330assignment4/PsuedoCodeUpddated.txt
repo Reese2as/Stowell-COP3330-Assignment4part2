@@ -1,0 +1,196 @@
+/*
+ *  UCF COP3330 Fall 2021 Assignment 4 Solution
+ *  Copyright 2021 Reese Stowell
+ */
+
+ class HelloController
+ {
+    Declares variables from fxml files
+    Holds Observable list "list" that stores todolist objects
+    Holds a variable of type Filechooser
+
+        public void initialize(URL location, ResourceBundle resources) {
+            Sets the data types for teh variables in the tableview
+
+            Sets default directory for the filechooser
+
+            Sets the tableview's list to Observable list "list"
+        }
+
+        public void AddPressJunit(ActionEvent actionEvent){
+            Is called when the ADD button is pressed
+            Sets/Creates id = size of list
+            Sets/Creates description = to the value in textarea
+            Sets/Creates Date = to the value in datebox
+            Sets/Creates Status as a boolean = to the value in checkbox
+            String Status;
+            if(StatusBool == true){
+                Status = "Complete";
+            }
+            else{
+                Status = "Incomplete";
+            }
+            Calls function AddPress(id, Description, Date, Status);
+            Refreshes the table
+        }
+
+        public void AddPress(int id, String Description, LocalDate Date, String Status){
+            Creates Item of class Items with values int id, String Description, LocalDate Date, String Status
+            Adds Item to the Observable list "list"
+        }
+
+        public void DeletePressJunit(ActionEvent actionEvent){
+            Is called when the Delete button is pressed
+            Creates/Sets Item of class Items = to the selected item by the users cursor
+            Calls function DeletePress(Item);
+            Refreshes the table
+        }
+
+        public void DeletePress(Items Item){
+            removes Item from the Observable list "list"
+            for(int i = 0; i<list.size(); i++){
+                sets id = to the size of the list
+            }
+        }
+
+        public void SaveEditPressJunit(ActionEvent actionEvent){
+            Is called when the Save Edit button is pressed
+            Creates/Sets Item of class Items = to the selected item by the users cursor
+            Sets/Creates description = to the value in textarea
+            Sets/Creates Date = to the value in datebox
+            Sets/Creates Status as a boolean = to the value in checkbox
+            String Status;
+            if(StatusBool == true){
+                Status = "Complete";
+            }
+            else{
+                Status = "Incomplete";
+            }
+            Calls function SaveEditPress(Item, Description, Date, Status);
+            Refreshes the table
+        }
+        public void SaveEditPress(Items Item, String Description, LocalDate Date, String Status){
+            Sets the Items status = to the value in checkbox
+            Sets the Items description = to the value in textarea
+            Sets the Items Date = to the value in datebox
+        }
+
+        public void ShowCompletePressJunit(ActionEvent actionEvent){
+            Is called when the Show Complete button is pressed
+            Creates observable list listComplete = FXCollections.observableArrayList();
+            Creates observable list listCompleted = the function ShowIncompletePress(listComplete);
+            Sets the items in the table to listCompleted
+            Refreshes the table
+        }
+
+        public ObservableList<Items> ShowCompletePress( ObservableList<Items> listComplete){
+
+            for(int i = 0; i<list.size(); i++){
+                if(list.get(i).Status == "Complete"){
+                    Adds all items with status Complete to listComplete
+                }
+            }
+            returns listComplete;
+        }
+
+        public void ShowIncompletePressJunit(ActionEvent actionEvent){
+            Is called when the Show Incomplete button is pressed
+            Creates observable list listIncomplete = FXCollections.observableArrayList();
+            Creates observable list listIncompleted = the function ShowIncompletePress(listIncomplete);
+            Sets the items in the table to listIncompleted
+            Refreshes the table
+        }
+
+        public ObservableList<Items> ShowIncompletePress( ObservableList<Items> listIncomplete){
+            for(int i = 0; i<list.size(); i++){
+                if(list.get(i).Status == "Incomplete") {
+                    Adds all items with status Incomplete to listIncomplete
+                }
+            }
+            returns listIncomplete;
+        }
+
+        public void ClearListPressJunit(ActionEvent actionEvent){
+            Is called when the Clear List button is pressed
+            Sets table to Observable list "list"
+            Calls ClearListPress();
+            Refreshes the table
+        }
+
+        public void ClearListPress(){
+            Clears the list
+        }
+
+        public void ShowAllPressJunit(ActionEvent actionEvent){
+            Is called when the Show All button is pressed
+            Creates observable list listAll = FXCollections.observableArrayList();
+            Creates observable list listALl2 = the function ShowIncompletePress(listAll);
+            Sets the items in the table to listAll2
+            Sets the items in the table to Observable list "list"
+            Refreshes the table
+        }
+
+        public ObservableList<Items> ShowAllPress(ObservableList<Items> listAll){
+            for(int i = 0; i<list.size(); i++){
+                Adds all items from Observable list "list" to list All
+            }
+            returns listAll;
+        }
+
+        public void SavePressJunit(ActionEvent actionEvent){
+            Is called when the Save button is pressed
+            Creates final Stage primaryStage = new Stage();
+            Sets title of filechooser to save dialog
+            Sets inital file name to List1
+            Sets filechoosers file type to .txt
+            Creates File file = Opens save dialog
+            Calls SavePress(file);
+        }
+        public void SavePress(File file){
+            String textFile = "";
+            for(int i = 0; i<list.size(); i++){
+                Gets each items in the list and seperates their description date and status by ;
+                will do this for each line on the .txt
+                Saves this long string to textFile
+            }
+            if (file != null) {
+                try {
+                    Writes the items as a string to the .txt
+                } catch (IOException ex) {
+
+                }
+            }
+        }
+
+        public void LoadPressJunit(ActionEvent actionEvent){
+            Is called when the Load button is pressed
+            Creates final Stage primaryStage = new Stage();
+            Sets title of filechooser to load dialog
+            Sets inital file name to List1
+            Sets filechoosers file type to .txt
+            Creates File file = Opens open dialog
+            Calls LoadPress(file);
+        }
+
+        public void LoadPress(File file){
+            List<String> lines;
+            try
+            {
+                Reads in each line from the file and stores in List lines
+            }
+            catch (Exception ex) {
+                System.out.println("File not found.");
+                return;
+            }
+
+            Items item;
+            String line, description, status;
+            LocalDate dueDate;
+            for (int i = 0; i < lines.size(); i++)
+            {
+                Uses substring to seperate the values in the .txt into variables using the ; as a marker to go on to the next item
+                stores all these variables in variable of type Items and adds them to the Observable list "list"
+                does this for each line in the .txt
+            }
+        }
+    }

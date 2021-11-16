@@ -5,7 +5,7 @@ To Add an Item to list input a description, status, and duedate and press the "A
 To Delete an Item click on an Item with your cursor and press the "Delete" Button
 
 To Edit an Item click on an Item with your cursor and change the values 
-in the description, status, and/or duedate then press the "Save edit" Button
+in description, status, and/or duedate then press the "Save edit" Button
 
 To Clear the List press the "Clear List" Button
 

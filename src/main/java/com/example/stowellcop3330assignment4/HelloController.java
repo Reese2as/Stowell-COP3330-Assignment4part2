@@ -11,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -82,7 +81,7 @@ public class HelloController implements Initializable {
     private CheckBox CheckBox;
 
 
-    ObservableList<Items> list = FXCollections.observableArrayList();
+    public ObservableList<Items> list = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -91,13 +90,12 @@ public class HelloController implements Initializable {
         DueDate.setCellValueFactory(new PropertyValueFactory<Items,LocalDate>("DueDate"));
         Status.setCellValueFactory(new PropertyValueFactory<Items,Boolean>("Status"));
 
-
         fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
 
         table.setItems(list);
     }
 
-    public void AddPress(ActionEvent actionEvent){
+    public void AddPressJunit(ActionEvent actionEvent){
         int id = list.size();
         String Description = TextArea.getText();
         LocalDate Date = DateBox.getValue();
@@ -109,22 +107,27 @@ public class HelloController implements Initializable {
         else{
             Status = "Incomplete";
         }
-        Items Item1 = new Items(id, Description, Date, Status);
-        list.add(Item1);
+        AddPress(id, Description, Date, Status);
         table.refresh();
     }
 
-    public void DeletePress(ActionEvent actionEvent){
-        int id = list.size();
+    public void AddPress(int id, String Description, LocalDate Date, String Status){
+        Items Item1 = new Items(id, Description, Date, Status);
+        list.add(Item1);
+    }
+
+    public void DeletePressJunit(ActionEvent actionEvent){
         Items Item = table.getSelectionModel().getSelectedItem();
+        DeletePress(Item);
+        table.refresh();
+    }
+    public void DeletePress(Items Item){
         list.remove(Item);
         for(int i = 0; i<list.size(); i++){
             list.get(i).id = i;
         }
-        table.refresh();
     }
-
-    public void SaveEditPress(ActionEvent actionEvent){
+    public void SaveEditPressJunit(ActionEvent actionEvent){
         Items Item = table.getSelectionModel().getSelectedItem();
         String Description = TextArea.getText();
         LocalDate Date = DateBox.getValue();
@@ -136,53 +139,79 @@ public class HelloController implements Initializable {
         else{
             Status = "Incomplete";
         }
+        SaveEditPress(Item, Description, Date, Status);
+        table.refresh();
+    }
+    public void SaveEditPress(Items Item, String Description, LocalDate Date, String Status){
         Item.setStatus(Status);
         Item.setDescription(Description);
         Item.setDuedate(Date);
-
-        table.refresh();
     }
 
-    public void ShowCompletePress(ActionEvent actionEvent){
+    public void ShowCompletePressJunit(ActionEvent actionEvent){
         ObservableList<Items> listComplete = FXCollections.observableArrayList();
+        ObservableList<Items> listCompleted = ShowCompletePress(listComplete);
+        table.setItems(listCompleted);
+        table.refresh();
+    }
+    public ObservableList<Items> ShowCompletePress( ObservableList<Items> listComplete){
+
         for(int i = 0; i<list.size(); i++){
             if(list.get(i).Status == "Complete"){
                 listComplete.add(list.get(i));
             }
         }
-        table.setItems(listComplete);
+        return listComplete;
+    }
+
+    public void ShowIncompletePressJunit(ActionEvent actionEvent){
+        ObservableList<Items> listIncomplete = FXCollections.observableArrayList();
+        ObservableList<Items> listIncompleted = ShowIncompletePress(listIncomplete);
+        table.setItems(listIncompleted);
         table.refresh();
     }
 
-    public void ShowIncompletePress(ActionEvent actionEvent){
-        ObservableList<Items> listIncomplete = FXCollections.observableArrayList();
+    public ObservableList<Items> ShowIncompletePress( ObservableList<Items> listIncomplete){
         for(int i = 0; i<list.size(); i++){
             if(list.get(i).Status == "Incomplete") {
                 listIncomplete.add(list.get(i));
             }
         }
-        table.setItems(listIncomplete);
+        return listIncomplete;
+    }
+
+    public void ClearListPressJunit(ActionEvent actionEvent){
+        table.setItems(list);
+        ClearListPress();
         table.refresh();
     }
 
-    public void ClearListPress(ActionEvent actionEvent){
-        table.setItems(list);
+    public void ClearListPress(){
         list.clear();
-        table.refresh();
     }
 
-    public void ShowAllPress(ActionEvent actionEvent){
+    public void ShowAllPressJunit(ActionEvent actionEvent){
+        ObservableList<Items> listAll = FXCollections.observableArrayList();
+        ObservableList<Items> listAll2 = ShowAllPress(listAll);
+        table.setItems(listAll2);
         table.setItems(list);
         table.refresh();
     }
-
-    public void SavePress(ActionEvent actionEvent){
+    public ObservableList<Items> ShowAllPress(ObservableList<Items> listAll){
+        for(int i = 0; i<list.size(); i++){
+            listAll.add(list.get(i));
+        }
+        return listAll;
+    }
+    public void SavePressJunit(ActionEvent actionEvent){
         final Stage primaryStage = new Stage();
         fileChooser.setTitle("Save Dialog");
         fileChooser.setInitialFileName("List1");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("text File", "*.txt"));
         File file = fileChooser.showSaveDialog(primaryStage);
-
+        SavePress(file);
+    }
+    public void SavePress(File file){
         String textFile = "";
         for(int i = 0; i<list.size(); i++){
             textFile += list.get(i).Description;
@@ -207,12 +236,15 @@ public class HelloController implements Initializable {
         }
     }
 
-    public void LoadPress(ActionEvent actionEvent){
+    public void LoadPressJunit(ActionEvent actionEvent){
         final Stage primaryStage = new Stage();
         fileChooser.setTitle("Load Dialog");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("text File", "*.txt"));
         File file = fileChooser.showOpenDialog(primaryStage);
+        LoadPress(file);
+    }
 
+    public void LoadPress(File file){
         List<String> lines;
         try
         {
@@ -240,10 +272,5 @@ public class HelloController implements Initializable {
             item = new Items(list.size(), description, dueDate, status);
             list.add(item);
         }
-
     }
-
-
-
-
 }
