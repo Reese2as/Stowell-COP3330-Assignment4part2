@@ -2,71 +2,64 @@
 /'
 UCF COP3330 Fall 2021 Assignment 4 Solution
 Copyright 2021 Reese Stowell
-
-Class HelloController will be renamed to Controller and
-Class HelloApp will be renamed to App in the UML I used what it WILL BE
 '/
-Class Controller
+Class HelloController
 {
-private Button AddList
-private Button DeleteList
-private Button LoadList
-private Button SaveList
-private ListView TodoLists
-private TextField Titlebox
-private Label Nameoflist
-private ListView ItemList
-private Button Edit
-private Button AddItem
-private Button DeleteItem
-private Button ShowCompleted
-private Button ShowIncomplete
-private Button ShowAll
-private Checkbox Completed
-private DatePicker EditDate
-private ChoiceBox EditStatus
-private TextArea EditDescription
-private DatePicker Date
-private ChoiceBox Status
-private TextArea Description
-private Button Save
-private Button SaveEdit
-AddList()
-DeleteList()
-LoadList()
-SaveList()
-AddItem()
-SaveItem()
-DeleteItem()
-ShowCompleted()
-ShowIncomplete()
-ShowAll()
-EditTodo()
-SaveEdit()
-initialize()
+FileChooser fileChooser
+private TableView<Items> table;
+private TableColumn<Items, Integer> id;
+private TableColumn<Items, String> Description;
+private TableColumn<Items, LocalDate> DueDate;
+private TableColumn<Items, Boolean> Status;
+private Button Add;
+private Button Delete;
+private Button SaveEdit;
+private Button ShowComplete;
+private Button ShowIncomplete;
+private Button ClearList;
+private Button ShowAll;
+private Button Save;
+private Button Load;
+private javafx.scene.control.TextArea TextArea;
+private DatePicker DateBox;
+private CheckBox CheckBox;
+public ObservableList<Items> list
+AddPressJunit(ActionEvent)
+AddPress(int, String, LocalDate, String)
+DeletePressJunit(ActionEvent)
+DeletePress(Items)
+SaveEditPressJunit(ActionEvent)
+SaveEditPress(Items, String, LocalDate, String)
+ShowCompletePressJunit(ActionEvent)
+ShowCompletePress(ObservableList<Items>)
+ShowIncompletePressJunit(ActionEvent)
+ClearListPressJunit(ActionEvent)
+ClearListPress()
+ShowAllPress(ObservableList<Items> listAll)
+SavePressJunit(ActionEvent)
+SavePress(File)
+LoadPressJunit(ActionEvent)
+LoadPress(File)
+initialize(URL location, ResourceBundle resources)
 }
 
-Class ToDoList
-{
-String Title
-Item[] Items
-}
 
 Class Item
 {
+int id
 String Description
 LocalDate Date
-Boolean Status
+String Status
 }
 
-Class App
+Class HelloApplication
 {
 start(Stage stage)
 main()
 }
 
-ToDoList -- Item: > Holds
-App -- Controller: > Uses
-Controller --  ToDoList: > Creates and Uses
+HelloController -- Item: > Creates, Uses, and Holds
+HelloApplication -- HelloController: > Uses
+
 
 @enduml
